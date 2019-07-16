@@ -19,9 +19,11 @@ module.exports = function(sequelize, DataTypes) {
         required: true
       },
       listingId: {
-        type: Sequelize.INTEGER,
-        references: 'listings',
-        referencesKey: 'id'
+        type: DataTypes.INTEGER,
+        references: {
+          model: "listings",
+          key: "id"
+        }
       } 
     });
     return sightings;

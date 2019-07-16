@@ -59,11 +59,12 @@ module.exports = function(sequelize, DataTypes) {
         required: true
       },
       userId: {
-        type: Sequelize.INTEGER,
-        references: 'user',
-        referencesKey: 'id'
+        type: DataTypes.INTEGER,
+        references: {
+          model: "users",
+          key: "id"
+        }
       },  
     });
-    user.hasMany(Sighting)
     return listings;
   };
