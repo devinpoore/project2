@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "password",
-    "database": "exampledb",
+    "database": "spawtted_db",
     "host": "localhost",
     "dialect": "mysql"
   },
