@@ -5,17 +5,30 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
-    },
+  },
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "dotenv": "^8.0.0",
-    "express": "^4.17.0",
+    "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
+    "fs": "0.0.1-security",
     "mysql2": "^1.6.5",
-    "sequelize": "^5.8.6"
+    "path": "^0.12.7",
+    "sequelize": "^5.10.1"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
     "prettier": "^1.17.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devinpoore/sPawtted.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/devinpoore/sPawtted/issues"
+  },
+  "homepage": "https://github.com/devinpoore/sPawtted#readme"
 }
