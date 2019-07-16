@@ -18,6 +18,9 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         required: true
       },
+      comments: {
+        type: DataTypes.TEXT
+      },
       listingId: {
         type: DataTypes.INTEGER,
         references: {
