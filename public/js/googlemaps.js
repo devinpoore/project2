@@ -1,3 +1,37 @@
+//GEOIP_DB//
+
+//Get User's location data with geo-ip
+
+//to be taken from geoip-db
+var localLat = '';
+var localLng = '';
+
+
+//On page load, initialize userLocation and Google Maps display:
+$(document).ready(function () {
+    userLocation();
+    initMAP();
+
+});
+
+//Ajax call to geoip-db get the city data from geoip-db and define the 'local' variables
+
+function userLocation() {
+    $.ajax({
+      url: "https://geoip-db.com/jsonp",
+      jsonpCallback: "callback",
+      dataType: "jsonp",
+  
+    }).then(function (location) {
+      localLat = location.latitude;
+      localLng = location.longitude;
+      
+    });
+  };
+
+
+//GOOGLE MAPS//
+
 //scipt source:
 
 {/* <script async defer src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap"> */ }
@@ -7,16 +41,20 @@
 // width: 100%;
 // }
 
-//TODO: Initialize Map with Pet Markers
+
+
+//TODO: Initialize Google Map with Pet Markers
 
 function initMAP() {
     //TODO: location variable to change based on address
     var location = {
         zoom: 8,
-        center: { lat: 47.6062, lng: 122.3321 }
+        center: { lat: localLat, lng: localLng }
     }
 
     var map = new google.maps.Map(document.getElementById('map'), options);
+    
+
 
     //Array of pet data for markers
     var pets = []
