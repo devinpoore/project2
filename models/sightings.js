@@ -18,10 +18,15 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         required: true
       },
+      comments: {
+        type: DataTypes.TEXT
+      },
       listingId: {
-        type: Sequelize.INTEGER,
-        references: 'listings',
-        referencesKey: 'id'
+        type: DataTypes.INTEGER,
+        references: {
+          model: "listings",
+          key: "id"
+        }
       } 
     });
     return sightings;

@@ -47,6 +47,5 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
-  user.hasMany(Listing)
   return user;
 };

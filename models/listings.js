@@ -58,12 +58,16 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         required: true
       },
+      comments: {
+        type: DataTypes.TEXT
+      },
       userId: {
-        type: Sequelize.INTEGER,
-        references: 'user',
-        referencesKey: 'id'
+        type: DataTypes.INTEGER,
+        references: {
+          model: "users",
+          key: "id"
+        }
       },  
     });
-    user.hasMany(Sighting)
     return listings;
   };
