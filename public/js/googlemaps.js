@@ -10,7 +10,6 @@ var localLng = '';
 //On page load, initialize userLocation and Google Maps display:
 $(document).ready(function () {
     userLocation();
-    initMAP();
 
 });
 
@@ -25,7 +24,7 @@ function userLocation() {
     }).then(function (location) {
       localLat = location.latitude;
       localLng = location.longitude;
-      
+      initMAP();
     });
   };
 
@@ -52,7 +51,7 @@ function initMAP() {
         center: { lat: localLat, lng: localLng }
     }
 
-    var map = new google.maps.Map(document.getElementById('map'), options);
+    var map = new google.maps.Map(document.getElementById('map'), location);
     
 
 
