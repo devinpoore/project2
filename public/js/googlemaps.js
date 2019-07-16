@@ -46,7 +46,7 @@ function userLocation() {
 //TODO: Initialize Google Map with Pet Markers
 
 function initMAP() {
-    //TODO: location variable to change based on address
+    //location variable to change based on current address
     var location = {
         zoom: 8,
         center: { lat: localLat, lng: localLng }
@@ -59,7 +59,7 @@ function initMAP() {
     //Array of pet data for markers
     var pets = []
 
-    //loop through all pets and apply markers for each
+    //loop through all pets and apply addMarker function for each
     for(var i =0; i<petArray.length; i++){
         addMarker(pets[i])
     };
@@ -80,14 +80,14 @@ function initMAP() {
       if(petObject.icomImage) {
          marker.setIcon(petObject.iconImage); 
       }
-      //Check for object content -- content is temporary variable
+      //Check for object content, display if present -- content is temporary variable
       if(petObject.content) {
     //TODO: Information window displays when marker is clicked
       var infoWindow = new google.maps.InfoWindow({
           content: petObject.content
       });
 
-    // event listener for marker
+    // event listener for clicking on marker to bring up information window
       marker.addListener("click", function() {
         infoWindow.open(map,marker);
       });
