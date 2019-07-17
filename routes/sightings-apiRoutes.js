@@ -1,18 +1,15 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all users in database, display as json on api/user
-
-  app.get("/api/sightings", function(req, res) {
-    db.sightings.findAll({}).then(function(dbsightings) {
+  app.get("/api/sighting", function(req, res) {
+    db.sighting.findAll({}).then(function(dbsightings) {
       res.json(dbsightings);
 
     });
   });
 
-  // Create a new user profile
-  app.post("/api/sightings", function(req, res) {
-    db.sightings.create({
+  app.post("/api/sighting", function(req, res) {
+    db.sighting.create({
         sightingLocationLat: req.body.sightingLocationLat,
         sightingLocationLong: req.body.sightingLocationLong,
         dateTime: req.body.dateTime,
@@ -29,16 +26,14 @@ module.exports = function(app) {
         });
   });
 
-  // Delete a user by id
-  app.delete("/api/user/:id", function(req, res) {
-    db.sightings.destroy({ where: { id: req.params.id } }).then(function(dbsightings) {
+  app.delete("/api/sighting/:id", function(req, res) {
+    db.sighting.destroy({ where: { id: req.params.id } }).then(function(dbsightings) {
       res.json(dbsightings);
     });
   });
 
-  //Update a user by id
-  app.put("/api/user", function(req,res) {
-    db.sightings.update(
+  app.put("/api/sighting", function(req,res) {
+    db.sighting.update(
       {
         sightingLocationLat: req.body.sightingLocationLat,
         sightingLocationLong: req.body.sightingLocationLong,
