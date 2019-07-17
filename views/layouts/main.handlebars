@@ -8,20 +8,22 @@
   <title>Home Page</title>
 
   <!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/css/mdb.min.css" rel="stylesheet">
 
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js"></script>
 
   {{!-- jQuery --}}
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -30,11 +32,11 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgRbaqVhsVAK0t4HdIdgESatHXCSzMa8U&callback=initMap"></script>
 
   <style>
-    
     #mapBody {
       height: 80%;
       position: relative;
     }
+
     #mapParent {
       height: 80%;
       width: 75%;
@@ -43,12 +45,14 @@
       margin: 0px;
       padding: 0px;
     }
+
     #map {
       height: 100%;
       width: 100%;
       margin: 0px;
       padding: 0px;
     }
+
     #sideList {
       height: 100%;
       width: 25%;
@@ -57,88 +61,180 @@
       position: absolute;
       left: 0px;
     }
+
     h1 {
       text-align: center;
     }
 
+    nav {
+      position: relative;
+    }
+
+    #navButtons {
+      position: absolute;
+      right: 15px;
+    }
   </style>
 
 </head>
 
 <body>
 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <h1>s<i class='fas fa-paw'></i>tted</h1>
+
+    <div id="navButtons">
+      <button class="btn btn-primary btn-rounded my-3" data-toggle="modal" data-target="#listingModal">Report Lost
+        Pet</button>
+      <button class="btn btn-default btn-rounded my-3" data-toggle="modal"
+        data-target="#loginModal">Login/Register</button>
+    </div>
+
+  </nav>
+
+
   {{{body}}}
-{{!-- 
-  <script>
-    // TODO: Move all this js to an external file
-    var map, infoWindow;
-    var bounds;
 
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 12,
-        disableDefaultUI: true,
-        styles: [
-          { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }
-        ]
-      });
-      infoWindow = new google.maps.InfoWindow;
-      
-      map.addListener("idle", function() {
-        // console.log(map.getBounds());
-        bounds = map.getBounds();
-        updateList(bounds);
-        addMarkers(bounds);
-      });
+  
 
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+      <!--Content-->
+      <div class="modal-content">
 
-          infoWindow.setPosition(pos);
-          infoWindow.setContent('Location found.');
-          infoWindow.open(map);
-          map.setCenter(pos);
-        }, function () {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-      }
-    }
+        <!--Modal cascading tabs-->
+        <div class="modal-c-tabs">
 
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    }
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+                Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
+                Register</a>
+            </li>
+          </ul>
 
-    function updateList(boundObj) {
-      console.log("Update List: ", boundObj);
-      // TODO: Ajax get method to get listing data from database
-    }
+          <!-- Tab panels -->
+          <div class="tab-content">
+            <!--Panel 7-->
+            <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
 
-    // TODO: info windows can be added to markers on the map
-    function addMarkers(boundObj) {
-      console.log("Add Markers: ", boundObj);
-      // TODO: ajax get
-    }
+              <!--Body-->
+              <div class="modal-body mb-1">
+                <div class="md-form form-sm mb-5">
+                  <i class="fas fa-envelope prefix"></i>
+                  <input type="email" id="modalLRInput10" class="form-control form-control-sm validate"
+                    placeholder="Your Email">
+                  <label data-error="wrong" data-success="right" for="modalLRInput10"></label>
+                </div>
 
-    $("#test").on("click", function(event) {
-      console.log(map.getBounds());
-    });    
+                <div class="md-form form-sm mb-4">
+                  <i class="fas fa-lock prefix"></i>
+                  <input type="password" id="modalLRInput11" class="form-control form-control-sm validate"
+                    placeholder="Password">
+                  <label data-error="wrong" data-success="right" for="modalLRInput11"></label>
+                </div>
+                <div class="text-center mt-2">
+                  <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
+                </div>
+              </div>
+              <!--Footer-->
+              <div class="modal-footer">
+                <div class="options text-center text-md-right mt-1">
+                  <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
+                  <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+                </div>
+                <button type="button" class="btn btn-outline-info waves-effect ml-auto"
+                  data-dismiss="modal">Close</button>
+              </div>
 
-  </script> --}}
+            </div>
+            <!--/.Panel 7-->
 
-<script type="text/javascript" src="js/googlemaps.js"></script>
+            <!--Panel 8-->
+            <div class="tab-pane fade" id="panel8" role="tabpanel">
+
+              <!--Body-->
+              <div class="modal-body">
+                <div class="md-form form-sm mb-5">
+                  <i class="fas fa-user prefix"></i>
+                  <input type="text" id="modalLRInput12" class="form-control form-control-sm validate"
+                    placeholder="User Name">
+                  <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
+                </div>
+                <div class="md-form form-sm mb-5">
+                  <i class="fas fa-user prefix"></i>
+                  <input type="text" id="modalLRInput12" class="form-control form-control-sm validate"
+                    placeholder="First Name">
+                  <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
+                </div>
+                <div class="md-form form-sm mb-5">
+                  <i class="fas fa-user prefix"></i>
+                  <input type="text" id="modalLRInput12" class="form-control form-control-sm validate"
+                    placeholder="Last Name">
+                  <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
+                </div>
+
+                <div class="md-form form-sm mb-5">
+                  <i class="fas fa-envelope prefix"></i>
+                  <input type="email" id="modalLRInput12" class="form-control form-control-sm validate"
+                    placeholder="Your Email">
+                  <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
+                </div>
+
+
+                <div class="md-form form-sm mb-5">
+                  <i class="fas fa-lock prefix"></i>
+                  <input type="password" id="modalLRInput13" class="form-control form-control-sm validate"
+                    placeholder="Password">
+                  <label data-error="wrong" data-success="right" for="modalLRInput13"></label>
+                </div>
+
+                <div class="md-form form-sm mb-4">
+                  <i class="fas fa-map-marked-alt prefix"></i>
+                  <input type="text" id="modalLRInput14" class="form-control form-control-sm validate"
+                    placeholder="Address">
+                  <label data-error="wrong" data-success="right" for="modalLRInput14"></label>
+                </div>
+
+                <div class="md-form form-sm mb-4">
+                  <i class="fas fa-phone prefix"></i>
+                  <input type="number" id="modalLRInput14" class="form-control form-control-sm validate"
+                    placeholder="Phone Number">
+                  <label data-error="wrong" data-success="right" for="modalLRInput14"></label>
+                </div>
+
+                <div class="text-center form-sm mt-2">
+                  <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                </div>
+
+              </div>
+              <!--Footer-->
+              <div class="modal-footer">
+                <div class="options text-right">
+                  <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+                </div>
+                <button type="button" class="btn btn-outline-info waves-effect ml-auto"
+                  data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            <!--/.Panel 8-->
+          </div>
+
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+
+
+  <script type="text/javascript" src="js/googlemaps.js"></script>
+  <script src="/js/index.js"></script>
+
 
 </body>
 

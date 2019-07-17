@@ -3,19 +3,18 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all listings and display on api/listings
 
-  app.get("/api/listings", function(req, res) {
-    db.listings.findAll({}).then(function(dblistings) {
+  app.get("/api/listing", function(req, res) {
+    db.listing.findAll({}).then(function(dblistings) {
       res.json(dblistings);
 
     });
   });
 
   // Create a new user profile
-  app.post("/api/listings", function(req, res) {
-    db.listings.create({
+  app.post("/api/listing", function(req, res) {
+    db.listing.create({
       image: req.body.image,
       isLost: req.body.isLost,
-      isFound: req.body.isFound,
       currentLocationLat: req.body.currentLocationLat,
       currentLocationLong: req.body.currentLocationLong,
       breed: req.body.breed,
@@ -34,19 +33,18 @@ module.exports = function(app) {
   });
 
   // Delete a user by id
-  app.delete("/api/listings/:id", function(req, res) {
-    db.listings.destroy({ where: { id: req.params.id } }).then(function(dblistings) {
+  app.delete("/api/listing/:id", function(req, res) {
+    db.listing.destroy({ where: { id: req.params.id } }).then(function(dblistings) {
       res.json(dblistings);
     });
   });
 
   //Update a user by id
-  app.put("/api/listings", function(req,res) {
-    db.listings.update(
+  app.put("/api/listing", function(req,res) {
+    db.listing.update(
       {
         image: req.body.image,
         isLost: req.body.isLost,
-        isFound: req.body.isFound,
         currentLocationLat: req.body.currentLocationLat,
         currentLocationLong: req.body.currentLocationLong,
         breed: req.body.breed,
