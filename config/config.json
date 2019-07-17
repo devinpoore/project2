@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Parente2019$",
+    "password": "password",
     "database": "spawtted_db",
     "host": "localhost",
     "dialect": "mysql"
