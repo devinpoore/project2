@@ -58,6 +58,9 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         required: true
       },
+      comments: {
+        type: DataTypes.TEXT
+      },
       userId: {
         type: DataTypes.INTEGER,
         references: {

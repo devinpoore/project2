@@ -2,6 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
+<<<<<<< HEAD
   app.get("/api/updateList", function(req, res) {
     var boundObj = req.body;
     db.listings.findAll({
@@ -26,8 +27,15 @@ module.exports = function(app) {
       }).then(function(dbListings) {
         // send the matching db entries to the browser so that it can create the map markers
         res.json(dbListings);
+=======
+
+  app.get("/api/examples", function(req, res) {
+    // db.Example.findAll({}).then(function(dbExamples) {
+      res.json("Index");
+
+>>>>>>> 3b2f93a10e689589c1778fb067b6ba44fabc5038
     });
-  });
+  // });
 
   // Create a new example
   app.post("/api/examples", function(req, res) {
