@@ -20,7 +20,12 @@ module.exports = function(app) {
      
     }).then(function(dbsightings) {
       res.json(dbsightings);
-    });
+    })
+    .catch(function(err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+          res.json(err);
+        });
   });
 
   // Delete a user by id
@@ -41,7 +46,12 @@ module.exports = function(app) {
       }
     ).then(function(dbsightings){
       res.json(dbsightings);
-    });
+    })
+    .catch(function(err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+          res.json(err);
+        });
   });
 
 };

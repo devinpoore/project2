@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
     phoneNumber: {
       type: DataTypes.INTEGER,
       required: true,
-      len: [9,9]
+      len: [10,10]
     },
     streetAddress:{
       type: DataTypes.INTEGER,
