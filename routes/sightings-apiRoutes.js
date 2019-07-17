@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.post("/api/sightings", function(req, res) {
     db.sightings.create({
         sightingLocationLat: req.body.sightingLocationLat,
+        sightingLocationLong: req.body.sightingLocationLong,
         dateTime: req.body.dateTime,
         image: req.body.image,
         comments: req.body.comments
@@ -36,9 +37,16 @@ module.exports = function(app) {
   });
 
   //Update a user by id
-  app.put("api/user/:id", function(req,res) {
+  app.put("/api/user", function(req,res) {
     db.sightings.update(
-      req.body,
+      {
+        sightingLocationLat: req.body.sightingLocationLat,
+        sightingLocationLong: req.body.sightingLocationLong,
+        dateTime: req.body.dateTime,
+        image: req.body.image,
+        comments: req.body.comments
+     
+    },
       {
         where: {
           id: req.body.id

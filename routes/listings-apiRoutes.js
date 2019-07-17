@@ -41,9 +41,20 @@ module.exports = function(app) {
   });
 
   //Update a user by id
-  app.put("api/listings/:id", function(req,res) {
+  app.put("/api/listings", function(req,res) {
     db.listings.update(
-      req.body,
+      {
+        image: req.body.image,
+        isLost: req.body.isLost,
+        isFound: req.body.isFound,
+        currentLocationLat: req.body.currentLocationLat,
+        currentLocationLong: req.body.currentLocationLong,
+        breed: req.body.breed,
+        gender: req.body.gender,
+        animalType: req.body.animalType,
+        comments: req.body.comments
+  
+      },
       {
         where: {
           id: req.body.id

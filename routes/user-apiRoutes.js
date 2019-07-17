@@ -32,15 +32,26 @@ module.exports = function(app) {
 
   // Delete a user by id
   app.delete("/api/user/:id", function(req, res) {
-    db.user.destroy({ where: { id: req.params.id } }).then(function(dbuser) {
+    db.user.destroy({ where: { 
+      id: req.params.id 
+    } 
+    }).then(function(dbuser) {
       res.json(dbuser);
     });
   });
 
   //Update a user by id
-  app.put("api/user/:id", function(req,res) {
+  app.put("/api/user", function(req,res) {
     db.user.update(
-      req.body,
+      {
+        userName: req.body.userName,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
+        streetAddress: req.body.streetAddress,
+        password: req.body.password
+      },
       {
         where: {
           id: req.body.id

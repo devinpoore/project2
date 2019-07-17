@@ -31,12 +31,12 @@ module.exports = function(sequelize, DataTypes) {
       isUnique: true,
     },
     phoneNumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       required: true,
       len: [10,10]
     },
     streetAddress:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       required: true
     },
     password:{
