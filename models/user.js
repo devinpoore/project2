@@ -31,9 +31,8 @@ module.exports = function(sequelize, DataTypes) {
       isUnique: true,
     },
     phoneNumber: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.STRING,
       required: true,
-      len: [10,10]
     },
     streetAddress:{
       type: DataTypes.STRING,

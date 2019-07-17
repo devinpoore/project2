@@ -40,10 +40,10 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.BOOLEAN,
         defaultValue: true
       },
-      isFound: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-      },
+      // isFound: {
+      //   type: DataTypes.BOOLEAN,
+      //   defaultValue: false
+      // },
       currentLocationLat: {
         type: DataTypes.DECIMAL (10,8),
         allowNull: false,
