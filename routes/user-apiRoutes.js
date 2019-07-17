@@ -1,39 +1,39 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
+  // Get all users in database, display as json on api/user
 
-  app.get("/api/spawtted", function(req, res) {
-    // db.Example.findAll({}).then(function(dbExamples) {
-      res.json("Index");
+  app.get("/api/user", function(req, res) {
+    db.user.findAll({}).then(function(dbuser) {
+      res.json(dbuser);
 
     });
-  // });
+  });
 
   // Create a new user profile
-  app.post("/api/spawtted", function(req, res) {
+  app.post("/api/user", function(req, res) {
     db.user.create({
       userName: req.body.userName,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
       phoneNumber: req.body.phoneNumber,
-      streetAddress: req.body.streetAddress
-
+      streetAddress: req.body.streetAddress,
+      password: req.body.password
     }).then(function(dbuser) {
       res.json(dbuser);
     });
   });
 
   // Delete a user by id
-  app.delete("/api/spawtted/:id", function(req, res) {
+  app.delete("/api/user/:id", function(req, res) {
     db.user.destroy({ where: { id: req.params.id } }).then(function(dbuser) {
       res.json(dbuser);
     });
   });
 
   //Update a user by id
-  app.put("api/spawtted/:id", function(req,res) {
+  app.put("api/user/:id", function(req,res) {
     db.user.update(
       req.body,
       {

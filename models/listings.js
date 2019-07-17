@@ -12,29 +12,37 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         required: true
       },
-      postType: {
-        type: DataTypes.STRING,
-        required: true
+      // postType: {
+      //   type: DataTypes.STRING,
+      //   required: true
+      // },
+      // lostLocationLat: {
+      //   type: DataTypes.DECIMAL (10,8),
+      //   allowNull: false,
+      //   required: true
+      // },
+      // lostLocationLong: {
+      //   type: DataTypes.DECIMAL (11,8),
+      //   allowNull: false,
+      //   required: true
+      // },
+      // foundLocationLat: {
+      //   type: DataTypes.DECIMAL (10,8),
+      //   allowNull: false,
+      //   required: true
+      // },
+      // foundLocationLong: {
+      //   type: DataTypes.DECIMAL (11,8),
+      //   allowNull: false,
+      //   required: true
+      // },
+      isLost: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
       },
-      lostLocationLat: {
-        type: DataTypes.DECIMAL (10,8),
-        allowNull: false,
-        required: true
-      },
-      lostLocationLong: {
-        type: DataTypes.DECIMAL (11,8),
-        allowNull: false,
-        required: true
-      },
-      foundLocationLat: {
-        type: DataTypes.DECIMAL (10,8),
-        allowNull: false,
-        required: true
-      },
-      foundLocationLong: {
-        type: DataTypes.DECIMAL (11,8),
-        allowNull: false,
-        required: true
+      isFound: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
       },
       currentLocationLat: {
         type: DataTypes.DECIMAL (10,8),
