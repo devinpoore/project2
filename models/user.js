@@ -1,15 +1,8 @@
-var bcrypt = require('bcrypt');
-
-var Listing = require('./listings')
+// var bcrypt = require('bcrypt');
+// var Listing = require('./listings')
 
 module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define("user", {
-    id:{
-      primaryKey: true,
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true
-    },
     userName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,12 +24,11 @@ module.exports = function(sequelize, DataTypes) {
       isUnique: true,
     },
     phoneNumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       required: true,
-      len: [9,9]
     },
     streetAddress:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       required: true
     },
     password:{
@@ -46,6 +38,5 @@ module.exports = function(sequelize, DataTypes) {
       len: [5,12]
     },
   });
-
   return user;
 };

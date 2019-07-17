@@ -1,33 +1,33 @@
 module.exports = function(sequelize, DataTypes) {
-    var sightings = sequelize.define("sightings", {
-      sightingLocationLat: {
-          type: DataTypes.DECIMAL (10,8),
-          allowNull: false,
-          required: true
-      },
-      sightingLocationLong: {
-        type: DataTypes.DECIMAL (11,8),
+  var sighting = sequelize.define("sighting", {
+    sightingLocationLat: {
+        type: DataTypes.DECIMAL (10,8),
         allowNull: false,
         required: true
-      },
-      dateTime: {
-          type: DataTypes.INTEGER,
-          required: true
-      },
-      image: {
-        type: DataTypes.STRING,
-        required: true
-      },
-      comments: {
-        type: DataTypes.TEXT
-      },
-      listingId: {
+    },
+    sightingLocationLong: {
+      type: DataTypes.DECIMAL (11,8),
+      allowNull: false,
+      required: true
+    },
+    dateTime: {
         type: DataTypes.INTEGER,
-        references: {
-          model: "listings",
-          key: "id"
-        }
-      } 
-    });
-    return sightings;
-  };
+        required: true
+    },
+    image: {
+      type: DataTypes.STRING,
+      required: true
+    },
+    comments: {
+      type: DataTypes.TEXT
+    },
+    listingId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "listings",
+        key: "id"
+      }
+    } 
+  });
+  return sighting;
+};
