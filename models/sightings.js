@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var sightings = sequelize.define("sightings", {
+    var sighting = sequelize.define("sighting", {
       sightingLocationLat: {
           type: DataTypes.DECIMAL (10,8),
           allowNull: false,
@@ -26,5 +26,5 @@ module.exports = function(sequelize, DataTypes) {
         }
       } 
     });
-    return sightings;
+    return sighting;
   };

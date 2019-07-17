@@ -1,13 +1,13 @@
-var Sighting = require('./sightings');
+// var Sighting = require('./sightings');
 
 module.exports = function(sequelize, DataTypes) {
-    var listings = sequelize.define("listings", {
-      id: {
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        autoIncrement: true
-      },
+    var listing = sequelize.define("listing", {
+      // id: {
+      //   primaryKey: true,
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      //   autoIncrement: true
+      // },
       image: {
         type: DataTypes.STRING,
         required: true
@@ -28,22 +28,22 @@ module.exports = function(sequelize, DataTypes) {
       },
       foundLocationLat: {
         type: DataTypes.DECIMAL (10,8),
-        allowNull: false,
+        // allowNull: false,
         required: true
       },
       foundLocationLong: {
         type: DataTypes.DECIMAL (11,8),
-        allowNull: false,
+        // allowNull: false,
         required: true
       },
       currentLocationLat: {
         type: DataTypes.DECIMAL (10,8),
-        allowNull: false,
+        // allowNull: false,
         required: true
       },
       currentLocationLong: {
         type: DataTypes.DECIMAL (11,8),
-        allowNull: false,
+        // allowNull: false,
         required: true
       },
       breed: {
@@ -66,5 +66,5 @@ module.exports = function(sequelize, DataTypes) {
         }
       },  
     });
-    return listings;
+    return listing;
   };
