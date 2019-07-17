@@ -1,17 +1,18 @@
-var Sighting = require('./sightings');
+// var Sighting = require('./sightings');
 
 module.exports = function(sequelize, DataTypes) {
-    var listings = sequelize.define("listings", {
-      id: {
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        autoIncrement: true
-      },
+    var listing = sequelize.define("listing", {
+      // id: {
+      //   primaryKey: true,
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      //   autoIncrement: true
+      // },
       image: {
         type: DataTypes.STRING,
         required: true
       },
+<<<<<<< HEAD
       // postType: {
       //   type: DataTypes.STRING,
       //   required: true
@@ -39,6 +40,31 @@ module.exports = function(sequelize, DataTypes) {
       isLost: {
         type: DataTypes.BOOLEAN,
         defaultValue: true
+=======
+      postType: {
+        type: DataTypes.STRING,
+        required: true
+      },
+      lostLocationLat: {
+        type: DataTypes.DECIMAL (10,8),
+        allowNull: false,
+        required: true
+      },
+      lostLocationLong: {
+        type: DataTypes.DECIMAL (11,8),
+        allowNull: false,
+        required: true
+      },
+      foundLocationLat: {
+        type: DataTypes.DECIMAL (10,8),
+        // allowNull: false,
+        required: true
+      },
+      foundLocationLong: {
+        type: DataTypes.DECIMAL (11,8),
+        // allowNull: false,
+        required: true
+>>>>>>> 1b48b5313ee1c1f3510d9ef0644cf96903d08007
       },
       // isFound: {
       //   type: DataTypes.BOOLEAN,
@@ -46,12 +72,12 @@ module.exports = function(sequelize, DataTypes) {
       // },
       currentLocationLat: {
         type: DataTypes.DECIMAL (10,8),
-        allowNull: false,
+        // allowNull: false,
         required: true
       },
       currentLocationLong: {
         type: DataTypes.DECIMAL (11,8),
-        allowNull: false,
+        // allowNull: false,
         required: true
       },
       breed: {
@@ -77,5 +103,5 @@ module.exports = function(sequelize, DataTypes) {
         }
       },  
     });
-    return listings;
+    return listing;
   };

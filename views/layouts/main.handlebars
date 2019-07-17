@@ -7,11 +7,27 @@
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
   <title>Home Page</title>
 
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/css/mdb.min.css" rel="stylesheet">
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js"></script>
+
   {{!-- jQuery --}}
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {{!-- Google Maps --}}
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCg4w9dgOhJ7Y9oA_tXIKIxNEe40COemnU&callback=initMap"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgRbaqVhsVAK0t4HdIdgESatHXCSzMa8U&callback=initMap"></script>
 
   <style>
     
@@ -52,21 +68,29 @@
 <body>
 
   {{{body}}}
-
+{{!-- 
   <script>
+    // TODO: Move all this js to an external file
     var map, infoWindow;
+    var bounds;
 
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 12,
-        disbaleDefaultUI: true,
+        disableDefaultUI: true,
         styles: [
           { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }
-
         ]
       });
       infoWindow = new google.maps.InfoWindow;
+      
+      map.addListener("idle", function() {
+        // console.log(map.getBounds());
+        bounds = map.getBounds();
+        updateList(bounds);
+        addMarkers(bounds);
+      });
 
       // Try HTML5 geolocation.
       if (navigator.geolocation) {
@@ -97,7 +121,24 @@
       infoWindow.open(map);
     }
 
-  </script>
+    function updateList(boundObj) {
+      console.log("Update List: ", boundObj);
+      // TODO: Ajax get method to get listing data from database
+    }
+
+    // TODO: info windows can be added to markers on the map
+    function addMarkers(boundObj) {
+      console.log("Add Markers: ", boundObj);
+      // TODO: ajax get
+    }
+
+    $("#test").on("click", function(event) {
+      console.log(map.getBounds());
+    });    
+
+  </script> --}}
+
+<script type="text/javascript" src="js/googlemaps.js"></script>
 
 </body>
 

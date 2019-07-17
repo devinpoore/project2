@@ -1,11 +1,23 @@
 var map, infoWindow;
+var bounds; 
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 6
+    zoom: 12,
+    disableDefaultUI: true,
+    styles: [
+      { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }
+    ]
   });
   infoWindow = new google.maps.InfoWindow;
+  
+  map.addListener("idle", function() {
+    console.log(map.getBounds());
+    bounds = map.getBounds();
+    updateList(bounds);
+    addMarkers(bounds);
+  });
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -35,3 +47,16 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
+
+function updateList(boundObj) {
+  
+}
+
+// TODO: info windows can be added to markers on the map
+function addMarkers(boundObj) {
+
+}
+
+$("#test").on("click", function(event) {
+  console.log(map.getBounds());
+});
