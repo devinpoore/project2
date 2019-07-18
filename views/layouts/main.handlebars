@@ -36,6 +36,7 @@
       height: 90%;
       position: relative;
     }
+
     #mapParent {
       height: 90%;
       width: 75%;
@@ -44,12 +45,14 @@
       margin: 0px;
       padding: 0px;
     }
+
     #map {
       height: 100%;
       width: 100%;
       margin: 0px;
       padding: 0px;
     }
+
     #sideList {
       height: 100%;
       width: 25%;
@@ -58,42 +61,61 @@
       position: absolute;
       left: 0px;
     }
+
     h1 {
       text-align: center;
     }
+
     nav {
       position: relative;
     }
+
     #navButtons {
       position: absolute;
       right: 15px;
     }
+
+    .btn {
+      background-color: white;
+      color: blue;
+    }
+
+
     h2 {
       text-align: center;
     }
+
     textarea {
       width: 100%;
     }
+
     h5 {
       display: inline;
       font-weight: bold;
       position: relative;
     }
+
     li {
       position: relative;
     }
-    .fa-dog, .fa-venus {
+
+    .fa-dog,
+    .fa-venus {
       margin: 3px;
     }
+
     .fa-venus {
       color: #C36BFF;
     }
+
     .fa-mars {
       color: #52A4FF;
     }
+
     .fa-dog {
       color: #8C6726;
     }
+
     #listIconBox {
       float: right;
     }
@@ -103,14 +125,14 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-info">
 
     <h1>s<i class='fas fa-paw'></i>tted</h1>
 
     <div id="navButtons">
-      <button class="btn btn-primary btn-rounded my-3" data-toggle="modal" data-target="#listingModal">Report Lost
+      <button class="btn btn-rounded my-3" data-toggle="modal" data-target="#listingModal">Report Lost
         Pet</button>
-      <button class="btn btn-default btn-rounded my-3" data-toggle="modal"
+      <button class="btn btn-rounded my-3" data-toggle="modal"
         data-target="#loginModal">Login/Register</button>
     </div>
 
@@ -118,7 +140,7 @@
 
   {{{body}}}
 
-  
+
 
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog cascading-modal" role="document">
@@ -206,8 +228,7 @@
 
                 <div class="md-form form-sm mb-5">
                   <i class="fas fa-envelope prefix"></i>
-                  <input type="email" id="email" class="form-control form-control-sm validate"
-                    placeholder="Your Email">
+                  <input type="email" id="email" class="form-control form-control-sm validate" placeholder="Your Email">
                   <label data-error="wrong" data-success="right" for="email"></label>
                 </div>
 
@@ -221,8 +242,7 @@
 
                 <div class="md-form form-sm mb-4">
                   <i class="fas fa-map-marked-alt prefix"></i>
-                  <input type="text" id="address" class="form-control form-control-sm validate"
-                    placeholder="Address">
+                  <input type="text" id="address" class="form-control form-control-sm validate" placeholder="Address">
                   <label data-error="wrong" data-success="right" for="address"></label>
                 </div>
 
@@ -255,9 +275,10 @@
     </div>
   </div>
 
-  <div class="modal fade" id="listingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="listingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
-  
+
       <div class="modal-content">
 
         <div class="modal-header text-center">
@@ -266,19 +287,21 @@
         </div>
 
         <div class="modal-header text-center">
-          <p>We're so sorry to hear you've lost track of your buddy <i class="fas fa-sad-tear"></i> Fill in the information below and alert the sPAWtted community!</p>
+          <p>We're so sorry to hear you've lost track of your buddy <i class="fas fa-sad-tear"></i> Fill in the
+            information below and alert the sPAWtted community!</p>
         </div>
-  
+
         <div class="modal-body mb-1">
 
           <form action="/api/listing" method="POST">
             <p>Pet's Name</p>
             <div class="md-form form-sm mb-5">
               <input type="text" id="petName" class="form-control form-control-sm validate" placeholder="Pet Name">
-            </div>  
+            </div>
 
             <div class="md-form form-sm mb-5">
-              <input type="text" id="petBreed" class="form-control form-control-sm validate" placeholder="Breed (if known)">
+              <input type="text" id="petBreed" class="form-control form-control-sm validate"
+                placeholder="Breed (if known)">
             </div>
 
             <div class="md-form form-sm mb-5">
@@ -289,7 +312,7 @@
               {{!-- change to a dropdown --}}
               <input type="text" id="petType" class="form-control form-control-sm validate" placeholder="Dog or Cat">
             </div>
-            
+
             <div class="md-form form-sm mb-4">
               {{!-- attach maps listener to this input --}}
               <input type="text" id="lastKnownLocation" class="form-control form-control-sm validate"
@@ -297,14 +320,15 @@
             </div>
 
             <div class="md-form form-sm mb-5">
-              <textarea name="petDescription" id="petDescription" placeholder="Enter any additional comments or descriptors for your pet"></textarea>          
+              <textarea name="petDescription" id="petDescription"
+                placeholder="Enter any additional comments or descriptors for your pet"></textarea>
             </div>
-    
+
             <div class="text-center mt-2">
               <button id="lostPetSubmit" type="submit" class="btn btn-info">SUBMIT REPORT</button>
             </div>
           </form>
-  
+
         </div>
 
         <div class="modal-footer">
@@ -320,7 +344,7 @@
   <script type="text/javascript" src="js/googlemaps.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript" src="js/postListing.js"></script>
-  <script type= "text/javascript" src="/js/publicuser.js"></script>
+  <script type="text/javascript" src="/js/publicuser.js"></script>
 
 </body>
 
