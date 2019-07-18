@@ -10,6 +10,13 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/user:id", function (req, res) {
+    db.user.findOne({where: {id: req.params.id}})
+    .then(user => 
+      {res.render("user", user.dataValues)
+  })
+  })
+
   // Create a new user profile
   app.post("/api/user", function (req, res) {
     db.user.create({
