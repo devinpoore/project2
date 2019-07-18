@@ -1,17 +1,17 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all users in database, display as json on api/user
 
-  app.get("/api/user", function(req, res) {
-    db.user.findAll({}).then(function(dbuser) {
+  app.get("/api/user", function (req, res) {
+    db.user.findAll({}).then(function (dbuser) {
       res.json(dbuser);
 
     });
   });
 
   // Create a new user profile
-  app.post("/api/user", function(req, res) {
+  app.post("/api/user", function (req, res) {
     db.user.create({
       userName: req.body.userName,
       firstName: req.body.firstName,
@@ -20,28 +20,29 @@ module.exports = function(app) {
       phoneNumber: req.body.phoneNumber,
       streetAddress: req.body.streetAddress,
       password: req.body.password
-    }).then(function(dbuser) {
+    }).then(function (dbuser) {
       res.json(dbuser);
     })
-    .catch(function(err) {
-      // Whenever a validation or flag fails, an error is thrown
-      // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+      .catch(function (err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
         res.json(err);
       });
   });
 
   // Delete a user by id
-  app.delete("/api/user/:id", function(req, res) {
-    db.user.destroy({ where: { 
-      id: req.params.id 
-    } 
-    }).then(function(dbuser) {
+  app.delete("/api/user/:id", function (req, res) {
+    db.user.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbuser) {
       res.json(dbuser);
     });
   });
 
   //Update a user by id
-  app.put("/api/user", function(req,res) {
+  app.put("/api/user", function (req, res) {
     db.user.update(
       {
         userName: req.body.userName,
@@ -57,12 +58,12 @@ module.exports = function(app) {
           id: req.body.id
         }
       }
-    ).then(function(dbuser){
+    ).then(function (dbuser) {
       res.json(dbuser);
     })
-    .catch(function(err) {
-      // Whenever a validation or flag fails, an error is thrown
-      // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+      .catch(function (err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
         res.json(err);
       });
   });
@@ -71,24 +72,24 @@ module.exports = function(app) {
   //Existing User Login
   app.post("/api/user", function (req, res) {
     db.user.findOne({
-         where: {
-             userName: req.body.userName
-                }
+      where: {
+        email: req.body.email
+      }
     }).then(function (user) {
-        if (!user) {
-           res.redirect('/');
-        } else {
-bcrypt.compare(req.body.password, user.password, function (err, result) {
-       if (result == true) {
-           res.redirect('/');
-       } else {
-        res.send('Incorrect password');
+      if (!user) {
         res.redirect('/');
-       }
-     });
-    }
- });
-});
+      } else {
+        bcrypt.compare(req.body.password, user.password, function (err, result) {
+          if (result == true) {
+            res.redirect('/');
+          } else {
+            res.send('Incorrect password');
+            res.redirect('/');  
+          }
+        });
+      }
+    });
+  });
 
 
 };
