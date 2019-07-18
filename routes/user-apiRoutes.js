@@ -84,12 +84,20 @@ module.exports = function (app) {
             res.redirect('/');
           } else {
             res.send('Incorrect password');
-            res.redirect('/');  
+            res.redirect('/');
           }
         });
       }
     });
   });
 
+
+  //View user info on account page
+  app.get("/account/:id", function (req, res) {
+    db.user.findOne({ where: { id: req.params.id } })
+      .then(account => {
+        res.render("account", account.dataValues)
+      })
+  })
 
 };

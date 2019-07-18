@@ -11,6 +11,11 @@ var $address = $("#address");
 var $phoneNumber = $("#phonenumber");
 var $signUpBtn = $("#signupbutton")
 
+//Variables for existing user login
+
+var $loginEmail = $("#loginemail");
+var $loginPassword = $("#loginpassword");
+
 
 //API object containing each method used with the User database
 
