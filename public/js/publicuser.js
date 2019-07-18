@@ -98,7 +98,8 @@ var newUserSubmit = function(event) {
 
   //pass data into the API database, then clear out fields
   API.addNewUser(newUser).then(function() {
-    //TODO: Add a refresh page function
+    alert("Account has been added!");
+    
   });
 
   $userName.val("");
@@ -108,6 +109,8 @@ var newUserSubmit = function(event) {
   $phoneNumber.val("");
   $address.val("");
   $newPassword.val("");
+
+  res.redirect("/");
 };
 
 

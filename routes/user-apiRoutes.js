@@ -67,4 +67,28 @@ module.exports = function(app) {
       });
   });
 
+
+  //Existing User Login
+  app.post("/api/user", function (req, res) {
+    db.user.findOne({
+         where: {
+             userName: req.body.userName
+                }
+    }).then(function (user) {
+        if (!user) {
+           res.redirect('/');
+        } else {
+bcrypt.compare(req.body.password, user.password, function (err, result) {
+       if (result == true) {
+           res.redirect('/');
+       } else {
+        res.send('Incorrect password');
+        res.redirect('/');
+       }
+     });
+    }
+ });
+});
+
+
 };
