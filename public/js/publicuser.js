@@ -82,6 +82,10 @@ var newUserSubmit = function(event) {
     alert("Please enter an email address to contact.");
     return;
   }
+  if (!(newUser.password)) {
+    alert("Please enter a password for your account.");
+    return;
+  }
   if (!(newUser.phoneNumber)) {
     alert("Please enter a phone number to contact.");
     return;
@@ -90,13 +94,10 @@ var newUserSubmit = function(event) {
     alert("Please enter your street address.");
     return;
   }
-  if (!(newUser.password)) {
-    alert("Please enter a password for your account.");
-    return;
-  }
+  
 
   //pass data into the API database, then clear out fields
-  API.addNewUser(user).then(function() {
+  API.addNewUser(newUser).then(function() {
     //TODO: Add a refresh page function
   });
 
@@ -112,9 +113,6 @@ var newUserSubmit = function(event) {
 
 
 //event listener
-
-// $("loginModal").on('shown.bs.modal', function() {
   
 $signUpBtn.on("click", newUserSubmit);
-// });
 
