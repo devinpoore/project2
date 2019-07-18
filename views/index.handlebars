@@ -1,159 +1,28 @@
-
-<!--Modal: Login / Register Form-->
-<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <!--Content-->
-    <div class="modal-content">
-
-      <!--Modal cascading tabs-->
-      <div class="modal-c-tabs">
-
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
-              Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
-              Register</a>
-          </li>
-        </ul>
-
-        <!-- Tab panels -->
-        <div class="tab-content">
-          <!--Panel 7-->
-          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
-            <!--Body-->
-            <div class="modal-body mb-1">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput10" class="form-control form-control-sm validate" placeholder="Your Email">
-                <label data-error="wrong" data-success="right" for="modalLRInput10"></label>
-              </div>
-
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput11" class="form-control form-control-sm validate" placeholder="Password">
-                <label data-error="wrong" data-success="right" for="modalLRInput11"></label>
-              </div>
-              <div class="text-center mt-2">
-                <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
-              </div>
-            </div>
-            <!--Footer-->
-            <div class="modal-footer">
-              <div class="options text-center text-md-right mt-1">
-                <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
-                <p>Forgot <a href="#" class="blue-text">Password?</a></p>
-              </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-            </div>
-
-          </div>
-          <!--/.Panel 7-->
-
-          <!--Panel 8-->
-          <div class="tab-pane fade" id="panel8" role="tabpanel">
-
-            <!--Body-->
-            <div class="modal-body">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-user prefix"></i>
-                <input type="text" id="modalLRInput12" class="form-control form-control-sm validate" placeholder="User Name">
-                <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
-              </div>
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-user prefix"></i>
-                <input type="text" id="modalLRInput12" class="form-control form-control-sm validate" placeholder="First Name">
-                <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
-              </div>
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-user prefix"></i>
-                <input type="text" id="modalLRInput12" class="form-control form-control-sm validate" placeholder="Last Name">
-                <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
-              </div>
-
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate" placeholder="Your Email">
-                <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
-              </div>
-
-
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput13" class="form-control form-control-sm validate" placeholder="Password">
-                <label data-error="wrong" data-success="right" for="modalLRInput13"></label>
-              </div>
-
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-map-marked-alt prefix"></i>
-                <input type="text" id="modalLRInput14" class="form-control form-control-sm validate" placeholder="Address">
-                <label data-error="wrong" data-success="right" for="modalLRInput14"></label>
-              </div>
-
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-phone prefix"></i>
-                <input type="number" id="modalLRInput14" class="form-control form-control-sm validate" placeholder="Phone Number">
-                <label data-error="wrong" data-success="right" for="modalLRInput14"></label>
-              </div>
-
-              <div class="text-center form-sm mt-2">
-                <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
-              </div>
-
-            </div>
-            <!--Footer-->
-            <div class="modal-footer">
-              <div class="options text-right">
-                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
-              </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-          <!--/.Panel 8-->
-        </div>
-
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-</div>
+    
+{{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <div id="mySidenav" class="sidenav">
-<div id="main">
-  ...
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
 </div>
-
-<script>
-/* Set the width of the side navigation to 250px */
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
 <!-- Use any element to open the sidenav -->
 <span onclick="openNav()">open</span>
-
 <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 <div id="main">
   ...
 </div>
-
 <script>
   /* Set the width of the side navigation to 250px */
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
-
   /* Set the width of the side navigation to 0 */
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
   }
-8225a63f6b579c28ecb221d5a352c32fdee14ad3
 </script>
 <div id="home">
   <div class="container">
@@ -161,31 +30,31 @@ function closeNav() {
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Filter
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">ZIP Code</a>
-          <a class="dropdown-item" href="#">Animal Type</a>
-          <a class="dropdown-item" href="#">Location</a>
-        </div>
-      </li>
-      <li class="nav-item">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Lost Form<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Found Form</a>
-      </li>
-        <a class="nav-link disabled" href="#">Sign In</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Filter
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">ZIP Code</a>
+                  <a class="dropdown-item" href="#">Animal Type</a>
+                  <a class="dropdown-item" href="#">Location</a>
+                </div>
+              </li>
+              <li class="nav-item">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Lost Form<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Found Form</a>
+              </li>
+              <a class="nav-link disabled" href="#">Sign In</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
     </div>
   </div>
@@ -202,14 +71,6 @@ function closeNav() {
   </ul>
 </div>
 
-<<<<<<< HEAD
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
-
-<h1>sPAWtted</h1>
-
-=======
->>>>>>> 8225a63f6b579c28ecb221d5a352c32fdee14ad3
 <div id="mapParent">
   <div id="map"></div>
 </div>
