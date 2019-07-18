@@ -2,10 +2,9 @@
 <html>
 
 <head>
+
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <title>Home Page</title>
+  <title>sPAWtted</title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -14,7 +13,7 @@
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/css/mdb.min.css" rel="stylesheet">
 
-  <!-- JQuery -->
+  <!-- jQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
   <script type="text/javascript"
@@ -24,21 +23,22 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js"></script>
-
-  {{!-- jQuery --}}
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {{!-- Google Maps --}}
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgRbaqVhsVAK0t4HdIdgESatHXCSzMa8U&callback=initMap"></script>
 
   <style>
+    body {
+      background-color: darkslategray;
+    }
+
     #mapBody {
-      height: 80%;
+      height: 90%;
       position: relative;
     }
 
     #mapParent {
-      height: 80%;
+      height: 90%;
       width: 75%;
       position: absolute;
       right: 0px;
@@ -74,6 +74,35 @@
       position: absolute;
       right: 15px;
     }
+    h2 {
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+    }
+    h5 {
+      display: inline;
+      font-weight: bold;
+      position: relative;
+    }
+    li {
+      position: relative;
+    }
+    .fa-dog, .fa-venus {
+      margin: 3px;
+    }
+    .fa-venus {
+      color: #C36BFF;
+    }
+    .fa-mars {
+      color: #52A4FF;
+    }
+    .fa-dog {
+      color: #8C6726;
+    }
+    #listIconBox {
+      float: right;
+    }
   </style>
 
 </head>
@@ -92,7 +121,6 @@
     </div>
 
   </nav>
-
 
   {{{body}}}
 
@@ -160,18 +188,21 @@
 
               <!--Body-->
               <div class="modal-body">
+
                 <div class="md-form form-sm mb-5">
                   <i class="fas fa-user prefix"></i>
                   <input type="text" id="modalLRInput12" class="form-control form-control-sm validate"
                     placeholder="User Name">
                   <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
                 </div>
+
                 <div class="md-form form-sm mb-5">
                   <i class="fas fa-user prefix"></i>
                   <input type="text" id="modalLRInput12" class="form-control form-control-sm validate"
                     placeholder="First Name">
                   <label data-error="wrong" data-success="right" for="modalLRInput12"></label>
                 </div>
+
                 <div class="md-form form-sm mb-5">
                   <i class="fas fa-user prefix"></i>
                   <input type="text" id="modalLRInput12" class="form-control form-control-sm validate"
@@ -216,10 +247,10 @@
               <!--Footer-->
               <div class="modal-footer">
                 <div class="options text-right">
-                  <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+                  <p class="pt-1">Already have an account? <a href="#" class="blue-text">LOG IN</a></p>
                 </div>
                 <button type="button" class="btn btn-outline-info waves-effect ml-auto"
-                  data-dismiss="modal">Close</button>
+                  data-dismiss="modal">CANCEL</button>
               </div>
             </div>
             <!--/.Panel 8-->
@@ -227,14 +258,74 @@
 
         </div>
       </div>
-      <!--/.Content-->
+    </div>
+  </div>
+
+  <div class="modal fade" id="listingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+  
+      <div class="modal-content">
+
+        <div class="modal-header text-center">
+          <h2 class="modal-title">Report A Lost Pet</h2>
+          <hr>
+        </div>
+
+        <div class="modal-header text-center">
+          <p>We're so sorry to hear you've lost track of your buddy <i class="fas fa-sad-tear"></i> Fill in the information below and alert the sPAWtted community!</p>
+        </div>
+  
+        <div class="modal-body mb-1">
+
+          <form action="/api/listing" method="POST">
+            <p>Pet's Name</p>
+            <div class="md-form form-sm mb-5">
+              <input type="text" id="petName" class="form-control form-control-sm validate" placeholder="Pet Name">
+            </div>  
+
+            <div class="md-form form-sm mb-5">
+              <input type="text" id="petBreed" class="form-control form-control-sm validate" placeholder="Breed (if known)">
+            </div>
+
+            <div class="md-form form-sm mb-5">
+              <input type="text" id="petGender" class="form-control form-control-sm validate" placeholder="Gender">
+            </div>
+
+            <div class="md-form form-sm mb-5">
+              {{!-- change to a dropdown --}}
+              <input type="text" id="petType" class="form-control form-control-sm validate" placeholder="Dog or Cat">
+            </div>
+            
+            <div class="md-form form-sm mb-4">
+              {{!-- attach maps listener to this input --}}
+              <input type="text" id="lastKnownLocation" class="form-control form-control-sm validate"
+                placeholder="Last Known Location">
+            </div>
+
+            <div class="md-form form-sm mb-5">
+              <textarea name="petDescription" id="petDescription" placeholder="Enter any additional comments or descriptors for your pet"></textarea>          
+            </div>
+    
+            <div class="text-center mt-2">
+              <button id="lostPetSubmit" type="submit" class="btn btn-info">SUBMIT REPORT</button>
+            </div>
+          </form>
+  
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info waves-effect ml-auto" data-dismiss="modal">CANCEL</button>
+        </div>
+
+      </div>
     </div>
   </div>
 
 
-  <script type="text/javascript" src="js/googlemaps.js"></script>
-  <script src="/js/index.js"></script>
 
+  <script type="text/javascript" src="js/googlemaps.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="js/postListing.js"></script>
 
 </body>
 

@@ -2,46 +2,51 @@
 
 module.exports = function(sequelize, DataTypes) {
     var listing = sequelize.define("listing", {
-      image: {
+      petName: {
         type: DataTypes.STRING,
-        required: true
+        allowNull: false
+      },
+      image: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       isLost: {
         type: DataTypes.BOOLEAN,
+        allowNull: false,
         defaultValue: true
       },
       currentLocationLat: {
-        type: DataTypes.DECIMAL (10,8),
-        // allowNull: false,
-        required: true
+        type: DataTypes.DECIMAL (12,8),
+        allowNull: false
       },
       currentLocationLong: {
-        type: DataTypes.DECIMAL (11,8),
-        // allowNull: false,
-        required: true
+        type: DataTypes.DECIMAL (12,8),
+        allowNull: false
       },
       breed: {
         type: DataTypes.STRING,
-        required: true
+        allowNull: false
       },
       gender: {
         type: DataTypes.STRING,
-        required: true
+        allowNull: false
       },
       animalType: {
         type: DataTypes.STRING,
-        required: true
+        allowNull: false
       },
       comments: {
-        type: DataTypes.TEXT
+        type: DataTypes.TEXT,
+        allowNull: true
       },
-      userId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "users",
-          key: "id"
-        }
-      },  
+      // userId: {
+      //   type: DataTypes.INTEGER,
+      //   references: {
+      //     model: "users",
+      //     key: "id"
+      //   }
+      // },  
   });
   return listing;
 };
