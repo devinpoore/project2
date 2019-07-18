@@ -1,7 +1,10 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+
+// //bcrypt
 var bcrypt = require("bcrypt");
+// const saltRounds = 10;
 
 var db = require("./models");
 

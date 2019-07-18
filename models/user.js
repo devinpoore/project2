@@ -1,4 +1,4 @@
-// var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
 // var Listing = require('./listings')
 
 module.exports = function(sequelize, DataTypes) {
@@ -38,5 +38,16 @@ module.exports = function(sequelize, DataTypes) {
       len: [5,12]
     },
   });
+
+  //generate a hash for password with bcrypt
+  user.generateHash = function (password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  };
+
+  //check if password is valid
+  user.prototype.validatePassword = function (password) {
+    return bcrypt.compareSync(password, this.localPassword);
+  };
+
   return user;
 };
