@@ -48,7 +48,6 @@ module.exports = function(sequelize, DataTypes) {
   user.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.localPassword);
   };
-<<<<<<< HEAD
   
   //if user is deleted, all listings associated under that user are cleared out
   user.associate = function(models) {
@@ -58,8 +57,5 @@ module.exports = function(sequelize, DataTypes) {
 
   }
 
-=======
-    
->>>>>>> 59c68f27e4038a5843ef2145405336ad6f0609b7
   return user;
 };

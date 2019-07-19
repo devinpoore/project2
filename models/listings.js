@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         defaultValue: false
       },
-      postType: {
+      isLost: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true
@@ -42,13 +42,10 @@ module.exports = function(sequelize, DataTypes) {
       },
       userId: {
         type: DataTypes.INTEGER,
-<<<<<<< HEAD
         references: {
           model: "users",
           key: "id"
         }
-=======
->>>>>>> 59c68f27e4038a5843ef2145405336ad6f0609b7
       },  
   });
 
