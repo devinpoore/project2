@@ -95,7 +95,7 @@ module.exports = function (app) {
   app.get("/:id", function (req, res) {
     db.user.findOne({ where: { id: req.params.id } })
     .then(function (user) {
-      res.render("index", user.dataValues)
+      res.render("layouts/main", user.dataValues)
       })
       .catch(function (err) {
         // Whenever a validation or flag fails, an error is thrown

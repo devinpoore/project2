@@ -44,6 +44,9 @@ require("./routes/sightings-apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 require("./routes/auth.js")(app);
 
+//TODO: load passport strategies
+// require("./config/passport.js")(passport, models.user);
+
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
