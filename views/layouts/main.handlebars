@@ -26,6 +26,8 @@
   {{!-- Google Maps --}}
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgRbaqVhsVAK0t4HdIdgESatHXCSzMa8U&callback=initMap"></script>
+  {{!-- Cloudinary --}}
+  <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script> 
 
   <style>
     body {
@@ -54,7 +56,6 @@
     }
 
     #sideList {
-      height: 100%;
       width: 25%;
       margin: 0px;
       padding: 0px;
@@ -328,6 +329,8 @@
                 placeholder="Enter any additional comments or descriptors for your pet"></textarea>
             </div>
 
+            <button type="submit" id="upload_widget" class="cloudinary-button">Upload Photo</button>
+    
             <div class="text-center mt-2">
               <button id="lostPetSubmit" type="submit" class="btn btn-info">SUBMIT REPORT</button>
             </div>
@@ -348,7 +351,8 @@
   <script type="text/javascript" src="js/googlemaps.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript" src="js/postListing.js"></script>
-  <script type="text/javascript" src="/js/publicuser.js"></script>
+  <script type= "text/javascript" src="/js/publicuser.js"></script>
+  <script type="text/javascript" src="js/cloudinary.js"></script>
 
 </body>
 

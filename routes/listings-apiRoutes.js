@@ -2,18 +2,15 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all listings and display on api/listings
-
-  // app.get("/api/listing", function(req, res) {
-  //   db.listing.findAll({}).then(function(dblistings) {
-  //     res.json(dblistings);
-
-  //   });
-  // });
+  app.get("/api/listing", function(req, res) {
+    db.listing.findAll({}).then(function(dblistings) {
+      res.json(dblistings);
+    });
+  });
 
   app.post("/api/listing", function(req, res) {
     var listing = req.body;
     console.log(listing);
-
     db.listing.create({
       petName: listing.name,
       // image: listing.image,
@@ -26,7 +23,7 @@ module.exports = function(app) {
       comments: listing.desc
     }).then(function(dblistings) {
       console.log(dblistings);
-      res.end();
+      res.redirect("/");
       // res.json(dblistings);
     })
     // .catch(function(err) {
