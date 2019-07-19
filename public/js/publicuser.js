@@ -123,11 +123,19 @@ var newUserSubmit = function(event) {
 
 
 //TODO: Existing User Login
+var userLogin = function(event) {
+  event.preventDefault();
 
+
+API.getUser(user).then(function() {
+  
+})
+};
 
 
 
 //event listeners
   
 $signUpBtn.on("click", newUserSubmit);
+$loginBtn.on("click", userLogin);
 

@@ -33,14 +33,14 @@ module.exports = function(app) {
     });
   });
 
-  // Load sPAWtted main page and pass in an example by user id
-  app.get("/spawtted/:id", function(req, res) {
-    db.user.findOne({ where: { id: req.params.id } }).then(function(dbspawtted) {
-      res.render("spawtted", {
-        spawtted: dbspawtted
-      });
-    });
-  });
+  // // Load sPAWtted main page and pass in an example by user id
+  // app.get("/spawtted/:id", function(req, res) {
+  //   db.user.findOne({ where: { id: req.params.id } }).then(function(dbspawtted) {
+  //     res.render("spawtted", {
+  //       spawtted: dbspawtted
+  //     });
+  //   });
+  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
