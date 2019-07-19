@@ -48,6 +48,14 @@ module.exports = function(sequelize, DataTypes) {
   user.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.localPassword);
   };
+  
+  //if user is deleted, all listings associated under that user are cleared out
+  user.associate = function(models) {
+    user.hasMany(models.listing, {
+      onDelete: "cascase"
+    });
+
+  }
 
   return user;
 };

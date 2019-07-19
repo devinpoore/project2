@@ -2,19 +2,31 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 
-// //bcrypt
-var bcrypt = require("bcrypt");
-// const saltRounds = 10;
-
 var db = require("./models");
 
 var app = express();
+var passport = require('passport')
+var session = require('express-session')
+var bodyParser = require('body-parser')
 var PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+
+//For BodyParser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// For Passport
+ 
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+ 
+app.use(passport.initialize());
+ 
+app.use(passport.session()); // persistent login sessions
+
 
 // Handlebars
 app.engine(
@@ -30,6 +42,7 @@ require("./routes/user-apiRoutes")(app);
 require("./routes/listings-apiRoutes")(app);
 require("./routes/sightings-apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+require("./routes/auth.js")(app);
 
 var syncOptions = { force: false };
 

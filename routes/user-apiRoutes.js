@@ -81,7 +81,7 @@ module.exports = function (app) {
       } else {
         bcrypt.compare(req.body.password, user.password, function (err, result) {
           if (result == true) {
-            res.redirect('/');
+            res.redirect("/" + user.id);
           } else {
             res.send('Incorrect password');
             res.redirect('/');
@@ -91,13 +91,26 @@ module.exports = function (app) {
     });
   });
 
+  //View main page as user after login
+  app.get("/:id", function (req, res) {
+    db.user.findOne({ where: { id: req.params.id } })
+    .then(function (user) {
+      res.render("index", user.dataValues)
+      })
+      .catch(function (err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+        res.json(err);
+      });
+  });
+
 
   //View user info on account page
   app.get("/account/:id", function (req, res) {
     db.user.findOne({ where: { id: req.params.id } })
       .then(account => {
         res.render("account", account.dataValues)
-      })
-  })
+      });
+  });
 
 };

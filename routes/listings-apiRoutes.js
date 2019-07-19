@@ -3,12 +3,12 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all listings and display on api/listings
 
-  // app.get("/api/listing", function(req, res) {
-  //   db.listing.findAll({}).then(function(dblistings) {
-  //     res.json(dblistings);
+  app.get("/api/listing", function(req, res) {
+    db.listing.findAll({}).then(function(dblistings) {
+      res.json(dblistings);
 
-  //   });
-  // });
+    });
+  });
 
   app.post("/api/listing", function(req, res) {
     var listing = req.body;
@@ -25,9 +25,9 @@ module.exports = function(app) {
       animalType: listing.type,
       comments: listing.desc
     }).then(function(dblistings) {
-      console.log(dblistings);
+      // console.log(dblistings);
       res.end();
-      // res.json(dblistings);
+      res.json(dblistings);
     })
     // .catch(function(err) {
     //   // Whenever a validation or flag fails, an error is thrown

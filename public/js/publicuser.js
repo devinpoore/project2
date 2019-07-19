@@ -15,6 +15,7 @@ var $signUpBtn = $("#signupbutton")
 
 var $loginEmail = $("#loginemail");
 var $loginPassword = $("#loginpassword");
+var $loginBtn = $("#loginbutton");
 
 
 //API object containing each method used with the User database
@@ -33,7 +34,7 @@ var API = {
   },
   getUser: function(user) {
     return $.ajax({
-      url: "api/user",
+      url: "api/user" + id,
       type: "GET",
       data: JSON.stringify(user)
     });
@@ -104,7 +105,9 @@ var newUserSubmit = function(event) {
   //pass data into the API database, then clear out fields
   API.addNewUser(newUser).then(function() {
     alert("Account has been added!");
-    
+    location.reload();
+    // $("#loginmodal").modal("show");
+    // $("loginmodal").val("")
   });
 
   $userName.val("");
@@ -115,12 +118,16 @@ var newUserSubmit = function(event) {
   $address.val("");
   $newPassword.val("");
 
-  res.redirect("/");
+  
 };
 
 
+//TODO: Existing User Login
 
-//event listener
+
+
+
+//event listeners
   
 $signUpBtn.on("click", newUserSubmit);
 
