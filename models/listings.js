@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       image: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
         defaultValue: false
       },
       isLost: {
@@ -34,28 +34,30 @@ module.exports = function(sequelize, DataTypes) {
       },
       animalType: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        
+        
       },
       comments: {
         type: DataTypes.TEXT,
         allowNull: true
       },
-      userId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "users",
-          key: "id"
-        }
-      },  
+      // userId: {
+      //   type: DataTypes.INTEGER,
+      //   references: {
+      //     model: "users",
+      //     key: "id"
+      //   }
+      // },  
   });
 
-  listing.associate = function(models) {
-    listing.belongsTo(models.user, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+  // listing.associate = function(models) {
+  //   listing.belongsTo(models.user, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
 
   return listing;
 };

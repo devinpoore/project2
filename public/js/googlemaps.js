@@ -100,7 +100,7 @@ function buildInfoWindowHTML(listingObj) {
   var htmlString = [
     "<h1>" + listingObj.petName + "</h1>",
     "<hr>",
-    "<p>" + listingObj.animalType + "</p>",
+    "<p>" + listingObj.petType + "</p>",
     "<p>Breed: " + listingObj.breed + "</p>",
     "<p>Gender: " + listingObj.gender + "</p>",
     "<p>Comments: " + listingObj.comments + "</p>"

@@ -49,13 +49,13 @@ module.exports = function(sequelize, DataTypes) {
     return bcrypt.compareSync(password, this.localPassword);
   };
   
-  //if user is deleted, all listings associated under that user are cleared out
-  user.associate = function(models) {
-    user.hasMany(models.listing, {
-      onDelete: "cascase"
-    });
+  // //if user is deleted, all listings associated under that user are cleared out
+  // user.associate = function(models) {
+  //   user.hasMany(models.listing, {
+  //     onDelete: "cascase"
+  //   });
 
-  }
+  // }
 
   return user;
 };
