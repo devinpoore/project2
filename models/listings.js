@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       image: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
         defaultValue: false
       },
       isLost: {
@@ -34,7 +34,9 @@ module.exports = function(sequelize, DataTypes) {
       },
       animalType: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        
+        
       },
       comments: {
         type: DataTypes.TEXT,
