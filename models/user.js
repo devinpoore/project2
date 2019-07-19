@@ -1,5 +1,5 @@
 var bcrypt = require('bcrypt');
-// var Listing = require('./listings')
+var Listing = require('./listings')
 
 module.exports = function(sequelize, DataTypes) {
   var user = sequelize.define("user", {
@@ -48,6 +48,6 @@ module.exports = function(sequelize, DataTypes) {
   user.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.localPassword);
   };
-
+    
   return user;
 };

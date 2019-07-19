@@ -1,5 +1,5 @@
 // var Sighting = require('./sightings');
-
+var user = require('./user')
 module.exports = function(sequelize, DataTypes) {
     var listing = sequelize.define("listing", {
       petName: {
@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         defaultValue: false
       },
-      isLost: {
+      postType: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true
@@ -40,13 +40,9 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.TEXT,
         allowNull: true
       },
-      // userId: {
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: "users",
-      //     key: "id"
-      //   }
-      // },  
+      userId: {
+        type: DataTypes.INTEGER,
+      },  
   });
   return listing;
 };
