@@ -26,8 +26,8 @@ module.exports = function (app) {
       currentLocationLong: listing.long,
       breed: listing.breed,
       gender: listing.gender,
-      animalType: listing.animalType,
-      comments: listing.comments,
+      animalType: listing.type,
+      comments: listing.desc,
       userId: listing.userId // take this out once relationship with tables are 
     }).then(function (dblistings) {
       console.log(dblistings);
@@ -57,7 +57,7 @@ module.exports = function (app) {
         currentLocationLong: req.body.currentLocationLong,
         breed: req.body.breed,
         gender: req.body.gender,
-        animalType: req.body.animalType,
+        petType: req.body.petType,
         comments: req.body.comments
 
       },
