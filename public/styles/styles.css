@@ -10,6 +10,10 @@ h2 {
   color: blue;
 }
 
+html {
+  background-color: beige;
+}
+
 /* The side navigation menu */
 .sidenav {
   height: 100%; /* 100% Full-height */

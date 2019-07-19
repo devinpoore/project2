@@ -10,6 +10,21 @@ module.exports = function (app) {
     });
   });
 
+
+  //display user info on account page
+  app.get("/account/:id", function(req, res){
+    db.user.findOne({where: { id: req.params.id }} )
+      .then(account => {
+        let data = {
+          account: account.dataValues}
+        db.listing.findAll({where: {userId: req.params.id}})
+        .then(listingResult =>{
+          data.listings =  listingResult
+          // console.log(data)
+          res.render("account", data)
+        })
+      })
+  })
   // Create a new user profile
   app.post("/api/user", function (req, res) {
     db.user.create({
@@ -21,13 +36,14 @@ module.exports = function (app) {
       streetAddress: req.body.streetAddress,
       password: req.body.password
     }).then(function (dbuser) {
-      res.json(dbuser);
+      // res.json(dbuser);
+      res.redirect("/");
     })
-      .catch(function (err) {
-        // Whenever a validation or flag fails, an error is thrown
-        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-        res.json(err);
-      });
+    .catch(function (err) {
+      // Whenever a validation or flag fails, an error is thrown
+      // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+      res.json(err);
+    });
   });
 
   // Delete a user by id
