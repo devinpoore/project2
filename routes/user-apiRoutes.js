@@ -85,7 +85,7 @@ module.exports = function (app) {
   });
 
 
-  //Existing User Login
+  //TODO: Existing User Login
   app.post("/api/user", function (req, res) {
     db.user.findOne({
       where: {
@@ -95,9 +95,9 @@ module.exports = function (app) {
       if (!user) {
         res.redirect('/');
       } else {
-        bcrypt.compare(req.body.password, user.password, function (err, result) {
+        bcrypt.compareSync(req.body.password, user.password, function (err, result) {
           if (result == true) {
-            res.redirect('/');
+            res.redirect("/" + user.id);
           } else {
             res.send('Incorrect password');
             res.redirect('/');
@@ -107,13 +107,26 @@ module.exports = function (app) {
     });
   });
 
+  //Get individual User account
+  app.get("/api/user/:id", function (req, res) {
+    db.user.findOne({ where: { id: req.params.id } })
+    .then(function (user) {
+      res.json(user)
+      })
+      .catch(function (err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+        res.json(err);
+      });
+  });
+
 
   //View user info on account page
   app.get("/account/:id", function (req, res) {
     db.user.findOne({ where: { id: req.params.id } })
       .then(account => {
         res.render("account", account.dataValues)
-      })
-  })
+      });
+  });
 
 };

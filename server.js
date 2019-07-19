@@ -2,10 +2,6 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 
-// //bcrypt
-var bcrypt = require("bcrypt");
-// const saltRounds = 10;
-
 var db = require("./models");
 
 var app = express();
@@ -15,6 +11,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+
 
 // Handlebars
 app.engine(
@@ -30,6 +27,9 @@ require("./routes/user-apiRoutes")(app);
 require("./routes/listings-apiRoutes")(app);
 require("./routes/sightings-apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+
+//TODO: load passport strategies
+// require("./config/passport.js")(passport, models.user);
 
 var syncOptions = { force: false };
 

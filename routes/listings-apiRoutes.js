@@ -8,6 +8,12 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/listing", function(req, res) {
+    db.listing.findAll({}).then(function(dblistings) {
+      res.json(dblistings);
+
+    });
+  });
 
   app.post("/api/listing", function (req, res) {
     var listing = req.body;

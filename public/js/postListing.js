@@ -4,6 +4,7 @@ var petGender = $("#petGender");
 var petType = $("#petType");
 var lastKnownLocation = $("#lastKnownLocation");
 var description = $("#petDescription");
+var userID = localStorage.getItem("");
 
 //
 $("#lostPetSubmit").on("click", function(event) {
@@ -33,7 +34,8 @@ function buildNewListing(addressObj) {
         type: petType.val().trim(),
         desc: description.val().trim(),
         lat: lostLat,
-        long: lostLong
+        long: lostLong,
+        userID: userID
     }
     return newListingBuild;
 }
