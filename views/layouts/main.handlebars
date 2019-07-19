@@ -31,7 +31,7 @@
 
   <style>
     body {
-      background-color: darkslategray;
+      background-color: rgb(118, 178, 247);
     }
 
     #mapBody {
@@ -132,13 +132,13 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-info">
 
-    <h1>s<i class='fas fa-paw'></i>tted</h1>
+    <h1><strong>s<i class='fas fa-paw'></i>tted</strong></h1>
 
     <div id="navButtons">
       <button class="btn btn-rounded my-3" data-toggle="modal" data-target="#listingModal">Report Lost
         Pet</button>
-      <button class="btn btn-rounded my-3" data-toggle="modal"
-        data-target="#loginModal">Login/Register</button>
+      <button class="btn btn-default btn-rounded my-3" data-toggle="modal"
+        data-target="#loginModal"><i class="fas fa-user prefix"></i> Login/Register</button>
     </div>
 
   </nav>
@@ -188,7 +188,7 @@
                   <label data-error="wrong" data-success="right" for="loginpassword"></label>
                 </div>
                 <div class="text-center mt-2">
-                  <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
+                  <button class="btn btn-info"id="loginbutton">Log in <i class="fas fa-sign-in ml-1"></i></button>
                 </div>
               </div>
               <!--Footer-->
