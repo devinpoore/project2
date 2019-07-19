@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS spawtted_db;
+CREATE DATABASE spawtted_db;
+
