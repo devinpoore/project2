@@ -34,8 +34,8 @@ var API = {
   },
   getUser: function(user) {
     return $.ajax({
-      url: "api/user" + id,
-      type: "GET",
+      url: "api/user",
+      type: "POST",
       data: JSON.stringify(user)
     });
   },
@@ -126,8 +126,26 @@ var newUserSubmit = function(event) {
 var userLogin = function(event) {
   event.preventDefault();
 
-
-API.getUser(user).then(function() {
+  var userLogin = {
+    email: $loginEmail.val().trim(),
+    password: $loginPassword.val().trim()
+  };
+  if (!(userLogin.email)) {
+    alert("Please enter an email address to contact.");
+    return;
+  }
+  if (!(userLogin.password)) {
+    alert("Please enter a password for your account.");
+    return;
+  }
+  API.getUser(userLogin).then(function() {
+    for(var i = 0; i < API.length; i++) {
+    if (userLogin.email === API[i].email && userLogin.password === API[i].password ) {
+      console.log("this worked");
+      localStorage.setItem("user", JSON.stringify(API[i]));
+      // console.log(user);
+    }
+  }
   
 })
 };
