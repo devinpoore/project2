@@ -1,5 +1,9 @@
 var map, infoWindow;
-var bounds; 
+var listingWindow;
+var bounds;
+var Markers;
+var infoWindowHTML;
+var listingDOM = $(".list-group-item");
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -10,56 +14,41 @@ function initMap() {
       { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }
     ]
   });
+
   infoWindow = new google.maps.InfoWindow;
   
   map.addListener("idle", function() {
-    // updateList(bounds);
-    // addMarkers(bounds);
-    //console.log(map.getBounds());
     // the logic of this method should be moved to the api routes and sequelize should handle filtering the results
-    var markers = {};
-    var windows = {};
+    Markers = {};
+    infoWindowHTML = {};
 
     bounds = map.getBounds();
     var lowLat = bounds.na.j;
     var highLat = bounds.na.l;
     var lowLong = bounds.ga.j;
     var highLong = bounds.ga.l;
-    //console.log(lowLat, highLat, lowLong, highLong);
     $.ajax({
       url: "/api/listing",
       method: "GET"
     }).then(function(listingData) {
-      console.log(listingData);
       for (listing of listingData) {
+        console.log(listing);
         var listingLat = parseFloat(listing.currentLocationLat);
         var listingLong = parseFloat(listing.currentLocationLong);
-        //console.log(listingLat, listingLong);
         if (listingLat > lowLat && listingLat < highLat && listingLong > lowLong && listingLong < highLong) {
-          console.log(listing.petName);
-          // possibly name these markers
-          var markerId = listing.id;
-
-          var listingInfo = new google.maps.InfoWindow({
-            content: listing.petName
-          });
-          windows[markerId] = listingInfo;
+          var markerId = listing.id.toString();
+          infoWindowHTML[markerId] = buildInfoWindowHTML(listing);
           
           var marker = new google.maps.Marker({
             position: {lat: listingLat, lng: listingLong},
             map: map,
-            title: listing.id + ": " + listing.petName
-          })
-          
-          marker.addListener("click", function() {
-            windows[markerId].open(map, markers[markerId]);
-          });
-          
-          markers[markerId] = marker;
-
-          console.log(windows);
-          console.log(markers);
-          
+            title: markerId
+          })          
+          // marker.addListener("click", function() {
+          //   some listener logic will need to be added here
+          //   possibly loop through the markers in a separate function to add the listener
+          // });          
+          Markers[markerId] = marker;          
         }
       }
     });
@@ -73,9 +62,9 @@ function initMap() {
         lng: position.coords.longitude
       };
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      infoWindow.open(map);
+      // infoWindow.setPosition(pos);
+      // infoWindow.setContent('Location found.');
+      // infoWindow.open(map);
       map.setCenter(pos);
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -94,25 +83,27 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-function updateList(boundObj) {
-  // $.ajax({
-  //   url: "/api/listing",
-  //   method: "GET"
-  // }).then(function(listingData) {
-
-  // });  
-}
-
-// TODO: info windows can be added to markers on the map
-function addMarkers(boundObj) {
-  // $.ajax({
-  //   url: "/api/listing",
-  //   method: "GET"
-  // }).then(function(listingData) {
-
-  // });
-}
-
-$("#test").on("click", function(event) {
-  console.log(map.getBounds());
+listingDOM.on("click", function() {
+  var clickId = $(this).data("id").toString();
+  console.log(clickId);
+  var clickMarker = Markers[clickId];
+  map.setCenter(clickMarker.getPosition());
+  listingWindow = new google.maps.InfoWindow({
+    content: infoWindowHTML[clickId]
+  });
+  listingWindow.open(map, clickMarker);
+  // google.maps.event.trigger(clickMarker, 'click');
 });
+
+//
+function buildInfoWindowHTML(listingObj) {
+  var htmlString = [
+    "<h1>" + listingObj.petName + "</h1>",
+    "<hr>",
+    "<p>" + listingObj.animalType + "</p>",
+    "<p>Breed: " + listingObj.breed + "</p>",
+    "<p>Gender: " + listingObj.gender + "</p>",
+    "<p>Comments: " + listingObj.comments + "</p>"
+  ].join("")
+  return htmlString;
+}

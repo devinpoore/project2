@@ -2,7 +2,6 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all listings and display on api/listings
-
   app.get("/api/listing", function(req, res) {
     db.listing.findAll({}).then(function(dblistings) {
       res.json(dblistings);
