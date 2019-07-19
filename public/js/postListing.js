@@ -8,7 +8,7 @@ var description = $("#petDescription");
 //
 $("#lostPetSubmit").on("click", function(event) {
     event.preventDefault();
-
+    $("#listingModal").modal("hide");
     var addressString = lastKnownLocation.val().trim().split(" ").join("+");
     $.ajax({
         url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + addressString + "&key=AIzaSyB8eOGgIxYaJTzAqnBUh3pTyi0j2UQjSig",
@@ -46,5 +46,6 @@ function pushListing(listing) {
         data: listing
     }).then(function() {
         console.log("DP - Listing sent to the server");
+        location.reload();
     });
 }
