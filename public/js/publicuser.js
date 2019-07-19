@@ -59,12 +59,12 @@ var API = {
 
 var newUserSubmit = function(event) {
   event.preventDefault();
-
+  var emailFocus = $email.val().trim();
   var newUser = {
     userName: $userName.val().trim(),
     firstName: $firstName.val().trim(),
     lastName: $lastName.val().trim(),
-    email: $email.val().trim(),
+    email: emailFocus,
     phoneNumber: $phoneNumber.val().trim(),
     streetAddress: $address.val().trim(),
     password: $newPassword.val().trim()
@@ -103,24 +103,22 @@ var newUserSubmit = function(event) {
 
   //pass data into the API database, then clear out fields
   API.addNewUser(newUser).then(function() {
-    alert("Account has been added!");
-    
+    // alert("Account has been added!");
+    location.reload();
+    // prompt user to log in
   });
-
+  
+  $("#loginModal").modal("show");
+  $("#loginemail").val(emailFocus);
   $userName.val("");
   $firstName.val("");
   $lastName.val("");
-  $email.val("");
+  // $email.val("");
   $phoneNumber.val("");
   $address.val("");
   $newPassword.val("");
-
-  res.redirect("/");
 };
 
-
-
-//event listener
-  
+//event listener  
 $signUpBtn.on("click", newUserSubmit);
 

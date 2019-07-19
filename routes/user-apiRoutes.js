@@ -21,13 +21,14 @@ module.exports = function (app) {
       streetAddress: req.body.streetAddress,
       password: req.body.password
     }).then(function (dbuser) {
-      res.json(dbuser);
+      // res.json(dbuser);
+      res.redirect("/");
     })
-      .catch(function (err) {
-        // Whenever a validation or flag fails, an error is thrown
-        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-        res.json(err);
-      });
+    .catch(function (err) {
+      // Whenever a validation or flag fails, an error is thrown
+      // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+      res.json(err);
+    });
   });
 
   // Delete a user by id
