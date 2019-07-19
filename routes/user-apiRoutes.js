@@ -10,13 +10,21 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/user:id", function (req, res) {
-    db.user.findOne({where: {id: req.params.id}})
-    .then(user => 
-      {res.render("user", user.dataValues)
-  })
-  })
 
+  //display user info on account page
+  app.get("/account/:id", function(req, res){
+    db.user.findOne({where: { id: req.params.id }} )
+      .then(account => {
+        let data = {
+          account: account.dataValues}
+        db.listing.findAll({where: {userId: req.params.id}})
+        .then(listingResult =>{
+          data.listings =  listingResult
+          // console.log(data)
+          res.render("account", data)
+        })
+      })
+  })
   // Create a new user profile
   app.post("/api/user", function (req, res) {
     db.user.create({
