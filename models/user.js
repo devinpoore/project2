@@ -50,12 +50,12 @@ module.exports = function(sequelize, DataTypes) {
   };
   
   //if user is deleted, all listings associated under that user are cleared out
-  user.associate = function(models) {
-    user.hasMany(models.listing, {
-      onDelete: "cascase"
-    });
+  // user.associate = function(models) {
+  //   user.hasMany(models.listing, {
+  //     onDelete: "cascase"
+  //   });
 
-  }
+  // }
 
   return user;
 };
