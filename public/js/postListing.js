@@ -63,6 +63,10 @@ function pushListing(listing) {
         data: listing
     }).then(function() {
         console.log("DP - Listing sent to the server");
+        petName.val("");
+        petBreed.val("");
+        lastKnownLocation.val("");
+        description.val("");
         location.reload();
     });
 }
