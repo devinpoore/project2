@@ -14,7 +14,7 @@ Overview
 
 ## Getting Started
 
-sPAWtted is deployed via Heroku.  A direct link for the Heroku can be found here: https://jl2cburgerapp.herokuapp.com/
+sPAWtted is deployed via Heroku.  A direct link for the Heroku can be found here: https://spawtted.herokuapp.com/
 
 Files and other information can be found on GitHub here: https://github.com/devinpoore/sPawtted
 
