@@ -1,6 +1,7 @@
 //Register New User//
 
 //Variables for new user registration
+var baseUrl = window.location.protocol + "//" + window.location.hostname +":" + window.location.port 
 
 var $userName = $("#newusername");
 var $firstName = $("#firstname");
@@ -35,7 +36,7 @@ var API = {
   getUser: function(user) {
     return $.ajax({
       url: "api/user",
-      type: "POST",
+      type: "GET",
       data: JSON.stringify(user)
     });
   },
@@ -103,9 +104,15 @@ var newUserSubmit = function(event) {
   
 
   //pass data into the API database, then clear out fields
-  API.addNewUser(newUser).then(function() {
+  API.addNewUser(newUser).then(function(returnUser) {
+      if (newUser.email === returnUser.email && newUser.password === returnUser.password ) {
+        console.log("this worked");
+        localStorage.setItem("user", JSON.stringify(API[i]));
+      document.location.href = baseUrl + "/account/" + returnUser.id  
+       console.log(user);
+      }
     // alert("Account has been added!");
-    location.reload();
+    //location.reload();
     // prompt user to log in
   });
   
@@ -126,7 +133,6 @@ var newUserSubmit = function(event) {
 //TODO: Existing User Login
 var userLogin = function(event) {
   event.preventDefault();
-
   var userLogin = {
     email: $loginEmail.val().trim(),
     password: $loginPassword.val().trim()
@@ -139,12 +145,15 @@ var userLogin = function(event) {
     alert("Please enter a password for your account.");
     return;
   }
-  API.getUser(userLogin).then(function() {
-    for(var i = 0; i < API.length; i++) {
-    if (userLogin.email === API[i].email && userLogin.password === API[i].password ) {
+  API.getUser(userLogin).then(function(returnUser) {
+    console.log(returnUser)
+
+    for(var i = 0; i < returnUser.length; i++) {
+    if (userLogin.email === returnUser[i].email && userLogin.password === returnUser[i].password ) {
       console.log("this worked");
       localStorage.setItem("user", JSON.stringify(API[i]));
-      // console.log(user);
+    document.location.href = baseUrl + "/account/" + returnUser[i].id  
+     console.log(user);
     }
   }
   
@@ -157,4 +166,3 @@ var userLogin = function(event) {
   
 $signUpBtn.on("click", newUserSubmit);
 $loginBtn.on("click", userLogin);
-

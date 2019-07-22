@@ -7,9 +7,8 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       },
       image: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
-        defaultValue: false
+        type: DataTypes.STRING,
+        allowNull: false
       },
       isLost: {
         type: DataTypes.BOOLEAN,
@@ -42,13 +41,13 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.TEXT,
         allowNull: true
       },
-      // userId: {
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: "users",
-      //     key: "id"
-      //   }
-      // },  
+      userId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "users",
+          key: "id"
+        }
+      },  
   });
 
   // listing.associate = function(models) {

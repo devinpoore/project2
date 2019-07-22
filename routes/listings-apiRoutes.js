@@ -20,8 +20,7 @@ module.exports = function (app) {
     console.log(listing);
     db.listing.create({
       petName: listing.name,
-      // image: listing.image,
-      // isLost: req.body.isLost,
+      image: listing.image,
       currentLocationLat: listing.lat,
       currentLocationLong: listing.long,
       breed: listing.breed,
@@ -33,11 +32,11 @@ module.exports = function (app) {
       console.log(dblistings);
       res.json(dblistings);
     })
-    // .catch(function(err) {
-    //   // Whenever a validation or flag fails, an error is thrown
-    //   // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-    //   res.json(err);
-    // });
+    .catch(function(err) {
+      // Whenever a validation or flag fails, an error is thrown
+      // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+      res.json(err);
+    });
   });
 
 

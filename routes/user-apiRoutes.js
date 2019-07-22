@@ -1,4 +1,6 @@
 var db = require("../models");
+var bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 module.exports = function (app) {
   // Get all users in database, display as json on api/user
@@ -27,22 +29,25 @@ module.exports = function (app) {
   })
   // Create a new user profile
   app.post("/api/user", function (req, res) {
-    db.user.create({
-      userName: req.body.userName,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
-      streetAddress: req.body.streetAddress,
-      password: req.body.password
-    }).then(function (dbuser) {
-      // res.json(dbuser);
-      res.redirect("/");
-    })
-    .catch(function (err) {
-      // Whenever a validation or flag fails, an error is thrown
-      // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-      res.json(err);
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+      if (err) throw err;
+      db.user.create({
+        userName: req.body.userName,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
+        streetAddress: req.body.streetAddress,
+        password: req.body.password
+      }).then(function (dbuser) {
+        // res.json(dbuser);
+        res.redirect("/");
+      })
+      .catch(function (err) {
+        // Whenever a validation or flag fails, an error is thrown
+        // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+        res.json(err);
+      });
     });
   });
 
