@@ -1,65 +1,143 @@
-.list-group-item {
-  line-height: 2.5;
+body {
+  background-color: #456D80;
 }
 
-.container {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+p {
+  line-height: 1;
+}
+
+#mapBody {
+  height: 90%;
+  position: relative;
+}
+
+#mapParent {
+  height: 90%;
+  width: 75%;
+  position: absolute;
+  right: 5px;
+  margin: 0px;
+  padding: 0px;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+#sideList {
+  width: 24%;
+  height: 90%;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  left: 5px;
+  overflow-y: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+nav {
+  position: relative;
+  background-image: url("../img/dog-paw-print-trail-25.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: 190px;
+  margin-bottom: 5px;
+}
+
+#navButtons {
+  position: absolute;
+  right: 15px;
+}
+
+.btn {
+  background-color: white;
+  color: white;
 }
 
 h2 {
-  color: blue;
+  text-align: center;
 }
 
-html {
-  background-color: beige;
+textarea {
+  width: 100%;
 }
 
-/* The side navigation menu */
-.sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+h5 {
+  display: inline;
+  font-weight: bold;
+  position: relative;
 }
 
-/* The navigation menu links */
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #726f6f;
+li {
+  position: relative;
+}
+
+.fa-dog,
+.fa-cat,
+.fa-venus,
+.fa-mars {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.fa-venus {
+  color: #C36BFF;
+}
+
+.fa-mars {
+  color: #52A4FF;
+}
+
+.fa-dog {
+  color: #8C6726;
+}
+
+#listIconBox {
+  float: right;
+}
+
+#upload_widget,
+#lostPetSubmit {
+  width: 100%;
+  font-size: 12pt;
+}
+
+#lostPetSubmit {
+  font-weight: bold;
+}
+
+strong {
+  color: white;
+  font-size: 36pt;
+}
+
+.nav-btn {
+  color: #1F6180;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.nav-btn:hover {
+  color: #3DC2FF;
+}
+
+.list-group-item:hover {
+  background-color: rgb(174, 229, 255);
+}
+
+.markerImage {
+  width: 275px;
+}
+
+.sighting-btn {
+  width: 75%;
   display: block;
-  transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-  transition: margin-left .5s;
-  padding: 20px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  margin: 0 auto;
 }

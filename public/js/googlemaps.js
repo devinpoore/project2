@@ -1,4 +1,5 @@
-var map, infoWindow;
+var map;
+var infoWindow;
 var listingWindow;
 var bounds;
 var Markers;
@@ -8,7 +9,7 @@ var listingDOM = $(".list-group-item");
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 12,
+    zoom: 14,
     disableDefaultUI: true,
     styles: [
       { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }
@@ -32,23 +33,45 @@ function initMap() {
       method: "GET"
     }).then(function(listingData) {
       for (listing of listingData) {
-        console.log(listing);
+        // console.log(listing);
         var listingLat = parseFloat(listing.currentLocationLat);
         var listingLong = parseFloat(listing.currentLocationLong);
+
         if (listingLat > lowLat && listingLat < highLat && listingLong > lowLong && listingLong < highLong) {
+          
           var markerId = listing.id.toString();
           infoWindowHTML[markerId] = buildInfoWindowHTML(listing);
+          var listingHTML = buildInfoWindowHTML(listing);
           
           var marker = new google.maps.Marker({
             position: {lat: listingLat, lng: listingLong},
             map: map,
             title: markerId
-          })          
-          // marker.addListener("click", function() {
-          //   some listener logic will need to be added here
-          //   possibly loop through the markers in a separate function to add the listener
-          // });          
-          Markers[markerId] = marker;          
+          });
+
+          marker.addListener("click", function() {
+            Markers[marker.title].displayInfo(map);
+          });
+
+          var listingTest = new google.maps.InfoWindow({
+            content: listingHTML
+          });
+          
+          var newMarker = {
+            marker: marker,
+            infoWindowHTML: listingHTML,
+            infoWindow: listingTest,
+            displayInfo: function(map) {
+              this.infoWindow.open(map, this.marker);
+            },
+            close: function() {
+              console.log("closing info window")
+              this.infoWindow.close();
+            }
+          };
+
+          Markers[markerId] = newMarker;
+          // Markers[markerId].marker.addListener("click", Markers[markerId].displayInfo(map));
         }
       }
     });
@@ -61,10 +84,6 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
-      // infoWindow.setPosition(pos);
-      // infoWindow.setContent('Location found.');
-      // infoWindow.open(map);
       map.setCenter(pos);
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -83,27 +102,27 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+//
 listingDOM.on("click", function() {
+  // TODO: close any open info windows
   var clickId = $(this).data("id").toString();
-  console.log(clickId);
-  var clickMarker = Markers[clickId];
-  map.setCenter(clickMarker.getPosition());
-  listingWindow = new google.maps.InfoWindow({
-    content: infoWindowHTML[clickId]
-  });
-  listingWindow.open(map, clickMarker);
-  // google.maps.event.trigger(clickMarker, 'click');
+  Markers[clickId].displayInfo(map);
+  map.setCenter(Markers[clickId].marker.getPosition());
 });
 
 //
 function buildInfoWindowHTML(listingObj) {
   var htmlString = [
-    "<h1>" + listingObj.petName + "</h1>",
+    "<h2>" + listingObj.petName + "</h2>",
     "<hr>",
-    "<p>" + listingObj.petType + "</p>",
+    "<img class='markerImage' src='" + listingObj.image + "' alt='Picture of " + listingObj.petName + " - spawtted'>",
+    "<hr>",
+    "<p>Pet Type: " + listingObj.animalType + "</p>",
     "<p>Breed: " + listingObj.breed + "</p>",
     "<p>Gender: " + listingObj.gender + "</p>",
-    "<p>Comments: " + listingObj.comments + "</p>"
+    "<p>Comments: " + listingObj.comments + "</p>",
+    "<hr>",
+    "<button class='btn btn-success btn-md sighting-btn'>Report Sighting</button>"
   ].join("")
   return htmlString;
 }

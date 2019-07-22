@@ -3,15 +3,15 @@ var db = require("../models");
 module.exports = function(app) {
   app.get("/", function(req, res) {
     db.listing.findAll({}).then(function(dbListings) {
-      console.log(dbListings);
+      // console.log(dbListings);
       listings = [];
       for (listing of dbListings) {
         var isDog = true;
         var isMale = true;
-        if (listing.dataValues.animalType === "Cat") {
+        if (listing.dataValues.animalType.toLowerCase() === "cat") {
           isDog = false;
         }
-        if (listing.dataValues.gender === "Female") {
+        if (listing.dataValues.gender.toLowerCase() === "female") {
           isMale = false;
         }
         var dbListing = {
