@@ -24,10 +24,15 @@ function initMap() {
     infoWindowHTML = {};
 
     bounds = map.getBounds();
-    var lowLat = bounds.na.j;
-    var highLat = bounds.na.l;
-    var lowLong = bounds.ga.j;
-    var highLong = bounds.ga.l;
+
+    // console.log(bounds);
+    // DP_NOTE: Google changed the keys of the bounds object created above - keys corrected 1.5.2020
+    //          Issue: Markers were not generating in the Maps window
+
+    var lowLat = bounds.pa.g;
+    var highLat = bounds.pa.h;
+    var lowLong = bounds.ka.g;
+    var highLong = bounds.ka.h;
     $.ajax({
       url: "/api/listing",
       method: "GET"
